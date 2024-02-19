@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_design/log_in_ui.dart';
-
+import 'package:flutter_app_design/sign_up_ui.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -15,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const LogInPage(),
+      home: const SignUpPage(),
     );
   }
 }

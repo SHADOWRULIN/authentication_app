@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class LogInPage extends StatelessWidget {
-  const LogInPage({super.key});
+class SignUpPage extends StatelessWidget {
+  const SignUpPage ({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class LogInPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text(
-                "Sign In To Continue",
+                "New User? Get Started Now",
                 style: TextStyle(fontSize: 24, color: Color(0xff4F4F4F)),
               ),
               Padding(
@@ -91,22 +91,11 @@ class LogInPage extends StatelessWidget {
                     const SizedBox(
                       height: 10,
                     ),
-                    const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Password*",
-                          style: TextStyle(
-                            fontSize: 16,
-                          ),
-                        ),
-                        Text(
-                          "Forgot Password?",
-                          style: TextStyle(
-                            fontSize: 16,
-                          ),
-                        ),
-                      ],
+                    const Text(
+                      "Password*",
+                      style: TextStyle(
+                        fontSize: 16,
+                      ),
                     ),
                     const SizedBox(
                       height: 10,
@@ -133,24 +122,52 @@ class LogInPage extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(
-                height: 44,
-                width: 356,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(5)
+              Padding(
+                padding: const EdgeInsets.only(left: 26,right: 26),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SizedBox(
+                      width: 174,
+                      height: 44,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5)
+                          ),
+                          backgroundColor: const Color(0xff2F80ED)
+                        ),
+                        onPressed: () {},
+                        child: Text(
+                          "SIGN UP",
+                          style: GoogleFonts.cambo(
+                            fontSize: 22,
+                            color: Colors.white
+                          )
+                        ),
+                      ),
                     ),
-                    backgroundColor: const Color(0xff2F80ED)
-                  ),
-                  onPressed: () {},
-                  child: Text(
-                    "SIGN IN",
-                    style: GoogleFonts.cambo(
-                      fontSize: 22,
-                      color: Colors.white
-                    )
-                  ),
+                    SizedBox(
+                      width: 168,
+                      height: 44,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5)
+                          ),
+                          backgroundColor: const Color(0xff2F80ED)
+                        ),
+                        onPressed: () {},
+                        child: Text(
+                          "Generate",
+                          style: GoogleFonts.cambo(
+                            fontSize: 22,
+                            color: Colors.white
+                          )
+                        ),
+                      ),
+                    ),
+                  ],  
                 ),
               ),
               const SizedBox(
