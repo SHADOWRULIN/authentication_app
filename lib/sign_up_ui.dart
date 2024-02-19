@@ -1,9 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'dart:math'; 
 
-class SignUpPage extends StatelessWidget {
+class SignUpPage extends StatefulWidget {
   const SignUpPage ({super.key});
 
+  @override
+  State<SignUpPage> createState() => _SignUpPageState();
+}
+
+class _SignUpPageState extends State<SignUpPage> {
+  String generatedPassword = '';
+  void generatePassword() {
+    int length = 10;
+    bool includeNumberLetter = true;
+    bool includeSpecialChars = true;
+
+    const String numbersLetter = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const String specialChars = '@\$&';
+
+    String character = '';
+
+    if (includeNumberLetter) character += numbersLetter;
+    if (includeSpecialChars) character += specialChars;
+
+    String password = '';
+
+    for (int i = 0; i < length; i++) {
+      int randomIndex = Random().nextInt(character.length);
+      password += character[randomIndex];
+    }
+
+    setState(() {
+      generatedPassword = password;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -104,19 +135,17 @@ class SignUpPage extends StatelessWidget {
                       height: 36,
                       width: 356,
                       child: TextField(
-                        obscureText: true,
-                        obscuringCharacter: "*",
                         decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            suffixIcon: const Icon(
-                              Icons.remove_red_eye,
-                              color: Colors.black,
-                              size: 25,
-                            )
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5),
                           ),
+                          suffixIcon: IconButton(
+                            icon: const Icon(Icons.remove_red_eye, color: Colors.black, size: 25),
+                            onPressed: () {},
+                          ),
+                        ),
                         keyboardType: TextInputType.visiblePassword,
+                        controller: TextEditingController(text: generatedPassword),
                       ),
                     ),
                   ],
@@ -157,7 +186,7 @@ class SignUpPage extends StatelessWidget {
                           ),
                           backgroundColor: const Color(0xff2F80ED)
                         ),
-                        onPressed: () {},
+                        onPressed: generatePassword,
                         child: Text(
                           "Generate",
                           style: GoogleFonts.cambo(
