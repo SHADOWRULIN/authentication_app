@@ -1,8 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_design/sign_up_ui.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class LogInPage extends StatelessWidget {
+class LogInPage extends StatefulWidget {
   const LogInPage({super.key});
+
+  @override
+  State<LogInPage> createState() => _LogInPageState();
+}
+
+class _LogInPageState extends State<LogInPage> {
+  void switchToSignUpPage() {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const SignUpPage()
+      )
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -10,11 +23,34 @@ class LogInPage extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Image.asset(
-            "assets/top_banner.png",
-            height: 234,
-            width: double.infinity,
-            fit: BoxFit.fill,
+          Stack(
+            children: [
+              Image.asset(
+                "assets/top_banner.png",
+                height: 234,
+                width: double.infinity,
+                fit: BoxFit.fill,
+              ),
+              Positioned(
+                bottom: 140,
+                right: 30,
+                child: SizedBox(
+                  height: 40,
+                  width: 122,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5))),
+                    onPressed: switchToSignUpPage,
+                    child: Text(
+                      'SIGN UP',
+                      style: GoogleFonts.cambo(
+                          fontSize: 18, color: const Color(0xff2F80ED)),
+                    )
+                  ),
+                )
+              )
+            ],
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -24,7 +60,8 @@ class LogInPage extends StatelessWidget {
                 style: TextStyle(fontSize: 24, color: Color(0xff4F4F4F)),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 69,top: 10,right: 69,bottom: 10),
+                padding: const EdgeInsets.only(
+                    left: 69, top: 10, right: 69, bottom: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -52,18 +89,15 @@ class LogInPage extends StatelessWidget {
                   Image.asset(
                     "assets/Line 1.png",
                   ),
-                  Image.asset(
-                    "assets/OR.png",
-                    height: 28,
-                    width: 37
-                  ),
+                  Image.asset("assets/OR.png", height: 28, width: 37),
                   Image.asset(
                     "assets/Line 1.png",
                   ),
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 30,right: 30,top: 10,bottom: 30),
+                padding: const EdgeInsets.only(
+                    left: 30, right: 30, top: 10, bottom: 30),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -82,9 +116,8 @@ class LogInPage extends StatelessWidget {
                       child: TextField(
                         decoration: InputDecoration(
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(5),
-                            )
-                          ),
+                          borderRadius: BorderRadius.circular(5),
+                        )),
                         keyboardType: TextInputType.emailAddress,
                       ),
                     ),
@@ -125,8 +158,7 @@ class LogInPage extends StatelessWidget {
                               Icons.remove_red_eye,
                               color: Colors.black,
                               size: 25,
-                            )
-                          ),
+                            )),
                         keyboardType: TextInputType.visiblePassword,
                       ),
                     ),
@@ -138,19 +170,13 @@ class LogInPage extends StatelessWidget {
                 width: 356,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(5)
-                    ),
-                    backgroundColor: const Color(0xff2F80ED)
-                  ),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5)),
+                      backgroundColor: const Color(0xff2F80ED)),
                   onPressed: () {},
-                  child: Text(
-                    "SIGN IN",
-                    style: GoogleFonts.cambo(
-                      fontSize: 22,
-                      color: Colors.white
-                    )
-                  ),
+                  child: Text("SIGN IN",
+                      style:
+                          GoogleFonts.cambo(fontSize: 22, color: Colors.white)),
                 ),
               ),
               const SizedBox(
@@ -158,10 +184,7 @@ class LogInPage extends StatelessWidget {
               ),
               const Text(
                 "Terms and Conditions | Privacy Policy",
-                style: TextStyle(
-                  color: Color(0xff4F4F4F),
-                  fontSize: 12
-                ),
+                style: TextStyle(color: Color(0xff4F4F4F), fontSize: 12),
               )
             ],
           ),
